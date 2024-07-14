@@ -50,8 +50,9 @@ mse = mean_squared_error(housing_labels, housing_predictions)
 mse2 = mean_squared_error(housing_labels,housing_predictions2)
 rmse = np.sqrt(mse)
 rmse2 = np.sqrt(mse2)
-# print(housing_predictions)
-# print(housing_labels)
+print(housing_predictions)
+print(housing_predictions2)
+print(housing_labels)
 
-print(rmse)
-print(rmse2)
+print(rmse) # Linear Regression model
+print(rmse2) # Random Forest Model
