@@ -36,14 +36,22 @@ my_pipeline = Pipeline([
 ])
 
 housing_num_tr = my_pipeline.fit_transform(housing)
-
+from sklearn.ensemble import RandomForestRegressor
 model = LinearRegression()
+model2 = RandomForestRegressor()
 model.fit(housing_num_tr, housing_labels)
+model2.fit(housing_num_tr, housing_labels)
 
 from sklearn.metrics import mean_squared_error
 import numpy as np
 housing_predictions = model.predict(housing_num_tr)
+housing_predictions2 = model2.predict(housing_num_tr)
 mse = mean_squared_error(housing_labels, housing_predictions)
+mse2 = mean_squared_error(housing_labels,housing_predictions2)
 rmse = np.sqrt(mse)
+rmse2 = np.sqrt(mse2)
+# print(housing_predictions)
+# print(housing_labels)
 
 print(rmse)
+print(rmse2)
