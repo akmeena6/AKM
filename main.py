@@ -23,11 +23,11 @@ for train_index, test_index in split.split(housing, housing['CHAS']):
     strat_test_set = housing.loc[test_index]
 
 housing = strat_train_set.copy()
-housing_test = strat_test_set.copy()
 
-# housing = strat_train_set.drop("MEDV", axis=1)
+
+housing = strat_train_set.drop("MEDV", axis=1)
+
 housing_labels = strat_train_set["MEDV"].copy()
-
 imputer = SimpleImputer(strategy="median") #In case of missing values(Can check by randomly removing comments)
 imputer.fit(housing)
 
@@ -53,16 +53,17 @@ mse = mean_squared_error(housing_labels, housing_predictions)
 mse2 = mean_squared_error(housing_labels,housing_predictions2)
 rmse = np.sqrt(mse)
 rmse2 = np.sqrt(mse2)
-# print(housing_predictions)
-# print(housing_predictions2)
-# print(housing_labels)
+print(housing_predictions)
+print(housing_predictions2)
+print(housing_labels)
 
 housing_predictions.reshape(1,404)
 housing['predicted1'] = housing_predictions
 housing['predicted2'] = housing_predictions2
 # print(housing_predictions.shape)
 # print(housing_predictions)
-np.savetxt('data.csv', housing_predictions, delimiter=',', fmt='%d')
+np.savetxt('new_data1.csv', housing_predictions, delimiter=',', fmt='%d')
+np.savetxt('new_data2.csv', housing_predictions2, delimiter=',', fmt='%d')
 print(f"{housing}")
-# print(rmse) # Linear Regression model
-# print(rmse2) # Random Forest Model
+print(rmse) # Linear Regression model
+print(rmse2) # Random Forest Model
